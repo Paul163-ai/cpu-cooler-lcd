@@ -77,8 +77,5 @@ Try running the controller as root or with sudo, alternatively you can give read
 
 Please check the Troubleshooting section first! 👆
 
-Whether you need help getting it running or want to discuss new features/contributions:
-
-[Join our Discord](https://discord.gg/3fUw4GMJ5B)
-
-You're also welcome to open a GitHub Discussion for general questions.
+Whether you need help getting it running or want to discuss new features/contributions,
+you're welcome to open a GitHub Discussion or Issue.
