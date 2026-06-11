@@ -4,6 +4,12 @@
 
 A program that displays temperature on the thermal right cpu cooler's digital screen for Linux.
 
+## Tray icon
+
+A system tray icon shows the live CPU temperature:
+
+![Tray icon showing CPU temperature](assets/tray_icon_screenshot.png)
+
 # To build the controller :
 
 ## Create a python environement:
