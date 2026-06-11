@@ -1,4 +1,7 @@
 # digital_thermal_right_lcd
+
+[![GitHub repo](https://img.shields.io/badge/GitHub-cpu--cooler--lcd-blue?logo=github)](https://github.com/Paul163-ai/cpu-cooler-lcd)
+
 A program that displays temperature on the thermal right cpu cooler's digital screen for Linux.
 
 # To build the controller :
