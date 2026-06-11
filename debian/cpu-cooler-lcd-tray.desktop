@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=CPU Cooler Tray Icon
+Comment=Tray icon for the Thermalright cooler LCD controller
+Exec=/usr/bin/cpu-cooler-lcd-tray
+Icon=cpu-cooler-lcd
+Terminal=false
+X-GNOME-Autostart-enabled=true

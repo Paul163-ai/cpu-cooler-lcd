@@ -1,0 +1,11 @@
+[Unit]
+Description=Thermalright digital cooler LCD controller
+After=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/cpu-cooler-lcd-controller
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=default.target

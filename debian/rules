@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_configure:
+
+override_dh_auto_build:
+
+override_dh_auto_test:
+
+override_dh_auto_install:
+
+# This is a systemd --user service only; skip system-level unit handling.
+override_dh_installsystemd:
+
+override_dh_install:
+	dh_install
+	mkdir -p debian/cpu-cooler-lcd/usr/share/icons/hicolor/256x256/apps
+	cp assets/icon.png debian/cpu-cooler-lcd/usr/share/icons/hicolor/256x256/apps/cpu-cooler-lcd.png

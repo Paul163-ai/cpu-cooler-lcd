@@ -1,0 +1,12 @@
+src/*.py usr/lib/cpu-cooler-lcd/
+conf/pearless_assasin_120.json usr/share/cpu-cooler-lcd/conf/
+conf/pearless_assasin_140.json usr/share/cpu-cooler-lcd/conf/
+conf/pearless_assasin_140_big.json usr/share/cpu-cooler-lcd/conf/
+conf/thermalright_hr-10_2280_pro.json usr/share/cpu-cooler-lcd/conf/
+conf/tr_assassin_x_120r.json usr/share/cpu-cooler-lcd/conf/
+debian/cpu-cooler-lcd-controller usr/bin/
+debian/cpu-cooler-lcd-config usr/bin/
+debian/cpu-cooler-lcd-tray usr/bin/
+debian/cpu-cooler-lcd.service usr/lib/systemd/user/
+debian/cpu-cooler-lcd-config.desktop usr/share/applications/
+debian/cpu-cooler-lcd-tray.desktop etc/xdg/autostart/

@@ -1,0 +1,12 @@
+cpu-cooler-lcd (1.0-1) unstable; urgency=medium
+
+  * Initial Debian packaging.
+  * Made config and device-layout file paths relocatable
+    (~/.config/cpu-cooler-lcd, /usr/share/cpu-cooler-lcd) so the app can
+    run from a system install instead of the source tree.
+  * Added "Restart Tray Icon" and "Unload Everything" buttons to the
+    settings GUI.
+  * Added an application icon.
+  * Fixed a crash in CPU power reading on systems without RAPL support.
+
+ -- Paul Lintott <paul.lintott@gmail.com>  Thu, 11 Jun 2026 21:00:00 +0000

@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.pyc
+
+# Build artifacts
+*.deb
+*.buildinfo
+*.changes
+debian/.debhelper/
+debian/cpu-cooler-lcd/
+debian/debhelper-build-stamp
+debian/files
+debian/*.substvars
+debian/*.debhelper
+debian/*.debhelper.log
+
+# Local Claude Code settings
+.claude/settings.local.json

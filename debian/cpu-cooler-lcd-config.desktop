@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=CPU Cooler LCD Config
+Comment=Configure the Thermalright cooler LCD display
+Exec=/usr/bin/cpu-cooler-lcd-config
+Icon=cpu-cooler-lcd
+Terminal=false
+Categories=Settings;HardwareSettings;
