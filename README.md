@@ -4,6 +4,18 @@
 
 A program that displays temperature on the thermal right cpu cooler's digital screen for Linux.
 
+## Download
+
+Pre-built `.deb` packages are available on the
+[Releases page](https://github.com/Paul163-ai/cpu-cooler-lcd/releases/latest).
+Install with:
+
+```bash
+sudo apt install ./cpu-cooler-lcd_1.0-1_all.deb
+```
+
+See `SETUP.md` for post-install steps.
+
 ## Tray icon
 
 A system tray icon shows the live CPU temperature:
