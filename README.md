@@ -11,7 +11,7 @@ Pre-built `.deb` packages are available on the
 Install with:
 
 ```bash
-sudo apt install ./cpu-cooler-lcd_1.0-1_all.deb
+sudo apt install ./cpu-cooler-lcd_1.1-1_all.deb
 ```
 
 See `SETUP.md` for post-install steps.
