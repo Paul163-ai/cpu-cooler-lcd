@@ -1,3 +1,13 @@
+cpu-cooler-lcd (1.1-1) unstable; urgency=medium
+
+  * Tray icon now starts the controller service automatically and only
+    shows while the service is running.
+  * Replaced "Quit Tray Icon" with "Unload Everything" in the tray menu.
+  * Settings GUI now starts the controller service and tray icon if
+    they aren't already running.
+
+ -- Paul Lintott <paul.lintott@gmail.com>  Fri, 12 Jun 2026 06:00:00 +0000
+
 cpu-cooler-lcd (1.0-1) unstable; urgency=medium
 
   * Initial Debian packaging.
