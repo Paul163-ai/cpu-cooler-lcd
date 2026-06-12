@@ -113,6 +113,9 @@ class LEDDisplayUI:
         self.start_time = time.time()
         threading.Thread(target=self.update_ui_loop, daemon=True).start()
 
+        # Make sure the LCD controller service and tray icon are running
+        self.ensure_running()
+
         # Reset button
         reset_button = ttk.Button(
             root,
@@ -904,6 +907,32 @@ class LEDDisplayUI:
                 subprocess.run(["systemctl", "--user", action, service_name], check=False)
             except Exception as e:
                 print(f"Error running 'systemctl --user {action} {service_name}': {e}")
+
+    def _is_service_running(self):
+        for service_name in self.CONTROLLER_SERVICE_NAMES:
+            result = subprocess.run(
+                ["systemctl", "--user", "is-active", "--quiet", service_name],
+                check=False,
+            )
+            if result.returncode == 0:
+                return True
+        return False
+
+    def _is_tray_running(self):
+        tray_script = Path(__file__).parent / "tray_icon.py"
+        result = subprocess.run(["pgrep", "-f", str(tray_script)], check=False, capture_output=True)
+        return result.returncode == 0
+
+    def ensure_running(self):
+        """Start the LCD controller service and tray icon if they aren't running."""
+        if not self._is_service_running():
+            self._systemctl_user("start")
+        if not self._is_tray_running():
+            tray_script = Path(__file__).parent / "tray_icon.py"
+            try:
+                subprocess.Popen([sys.executable, str(tray_script)])
+            except Exception as e:
+                print(f"Error starting tray icon: {e}")
 
     def restart_tray_icon(self):
         tray_script = Path(__file__).parent / "tray_icon.py"

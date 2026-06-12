@@ -17,6 +17,29 @@ CONFIG_PATH = _LOCAL_CONFIG_PATH if _LOCAL_CONFIG_PATH.exists() else ensure_user
 GUI_SCRIPT = Path(__file__).parent / "led_display_ui.py"
 PYTHON_BIN = sys.executable
 
+CONTROLLER_SERVICE_NAMES = ["cpu-cooler-lcd", "digital-lcd-controller"]
+
+
+def is_service_running():
+    for service_name in CONTROLLER_SERVICE_NAMES:
+        result = subprocess.run(
+            ["systemctl", "--user", "is-active", "--quiet", service_name],
+            check=False,
+        )
+        if result.returncode == 0:
+            return True
+    return False
+
+
+def start_service():
+    for service_name in CONTROLLER_SERVICE_NAMES:
+        result = subprocess.run(
+            ["systemctl", "--user", "start", service_name],
+            check=False,
+        )
+        if result.returncode == 0:
+            return
+
 
 def load_config():
     with open(CONFIG_PATH, "r") as f:
@@ -44,6 +67,8 @@ def make_icon_image(text, color="white"):
 
 class TrayApp:
     def __init__(self):
+        if not is_service_running():
+            start_service()
         self.metrics = Metrics()
         self.config = load_config()
         self.icon = pystray.Icon(
@@ -61,7 +86,7 @@ class TrayApp:
                 checked=lambda item: self.config.get("enabled", True),
             ),
             pystray.MenuItem("Open Settings", self.open_settings),
-            pystray.MenuItem("Quit Tray Icon", self.quit),
+            pystray.MenuItem("Unload Everything", self.unload_everything),
         )
 
     def toggle_display(self, icon, item):
@@ -73,13 +98,22 @@ class TrayApp:
     def open_settings(self, icon, item):
         subprocess.Popen([PYTHON_BIN, str(GUI_SCRIPT), str(CONFIG_PATH)])
 
-    def quit(self, icon, item):
+    def unload_everything(self, icon, item):
+        for service_name in CONTROLLER_SERVICE_NAMES:
+            try:
+                subprocess.run(["systemctl", "--user", "stop", service_name], check=False)
+            except Exception as e:
+                print(f"Error running 'systemctl --user stop {service_name}': {e}")
         self.icon.stop()
 
     def update_loop(self):
         temp_unit = {"cpu": "celsius", "gpu": "celsius"}
         while True:
             try:
+                self.icon.visible = is_service_running()
+                if not self.icon.visible:
+                    time.sleep(2)
+                    continue
                 self.config = load_config()
                 temp_unit = {
                     "cpu": self.config.get("cpu_temperature_unit", "celsius"),
